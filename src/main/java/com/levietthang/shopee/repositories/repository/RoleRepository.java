@@ -10,8 +10,8 @@ import java.util.Set;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer>, CustomRoleRepository {
-    @Query("SELECT r FROM com.levietthang.eeshopserver.entities.Role r WHERE r.name = ?1")
+    @Query("SELECT r FROM com.levietthang.shopee.entities.Role r WHERE r.name = ?1")
     Set<Role> findRoleByName(String name);
-    @Query("SELECT r FROM com.levietthang.eeshopserver.entities.Role r")
+    @Query("SELECT r FROM com.levietthang.shopee.entities.Role r")
     Set<Role> findAllRole();
 }
