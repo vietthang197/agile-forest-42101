@@ -4,20 +4,13 @@ import com.levietthang.shopee.constant.Constant;
 import com.levietthang.shopee.dto.UserRegisterDTO;
 import com.levietthang.shopee.entities.Role;
 import com.levietthang.shopee.entities.User;
-import com.levietthang.shopee.entities.UserDetails;
 import com.levietthang.shopee.model.RegisterStatus;
 import com.levietthang.shopee.model.Validator;
-import com.levietthang.shopee.repositories.repository.UserDetailsRepository;
 import com.levietthang.shopee.repositories.repository.UserRepository;
 import com.levietthang.shopee.services.CustomUserService;
 import com.levietthang.shopee.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.levietthang.shopee.repositories.repository.RoleRepository;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,15 +21,6 @@ public class UserServiceImpl implements CustomUserService, Constant {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private UserDetailsRepository userDetailsRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private RoleRepository roleRepository;
 
     @Autowired
     private RoleService roleService;
@@ -57,28 +41,28 @@ public class UserServiceImpl implements CustomUserService, Constant {
             return validatorUser(userRegisterDTO);
         } else {
             try {
-                userRegisterDTO.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
-                userRegisterDTO.setConfirmPassword(passwordEncoder.encode(userRegisterDTO.getConfirmPassword()));
+                // userRegisterDTO.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
+                // userRegisterDTO.setConfirmPassword(passwordEncoder.encode(userRegisterDTO.getConfirmPassword()));
 
-                User user = new User();
-                Set<Role> roles = roleService.findRoleByName("USER");
-                UserDetails userDetails = new UserDetails();
+                // User user = new User();
+                // Set<Role> roles = roleService.findRoleByName("USER");
+                // UserDetails userDetails = new UserDetails();
 
-                user.setUsername(userRegisterDTO.getUsername());
-                user.setPassword(userRegisterDTO.getPassword());
-                user.setEnable(true);
-                user.setRoles(roles);
-                user.setEmail(userRegisterDTO.getEmail());
-                User userCreate = userRepository.save(user);
+                // user.setUsername(userRegisterDTO.getUsername());
+                // user.setPassword(userRegisterDTO.getPassword());
+                // user.setEnable(true);
+                // user.setRoles(roles);
+                // user.setEmail(userRegisterDTO.getEmail());
+                // User userCreate = userRepository.save(user);
 
-                userDetails.setUserId(userCreate.getId());
-                userDetails.setName(userRegisterDTO.getName());
-                userDetails.setBirthday(userRegisterDTO.getBirthday());
-                userDetails.setAddress1(userRegisterDTO.getAddress1());
-                userDetails.setAddress2(userRegisterDTO.getAddress2());
-                userDetails.setPhone(userRegisterDTO.getPhone());
+                // userDetails.setUserId(userCreate.getId());
+                // userDetails.setName(userRegisterDTO.getName());
+                // userDetails.setBirthday(userRegisterDTO.getBirthday());
+                // userDetails.setAddress1(userRegisterDTO.getAddress1());
+                // userDetails.setAddress2(userRegisterDTO.getAddress2());
+                // userDetails.setPhone(userRegisterDTO.getPhone());
 
-                userDetailsRepository.save(userDetails);
+                // userDetailsRepository.save(userDetails);
                 return new RegisterStatus(true, Constant.REGISTER_SUCCESS);
             } catch (Exception e) {
                 e.printStackTrace();

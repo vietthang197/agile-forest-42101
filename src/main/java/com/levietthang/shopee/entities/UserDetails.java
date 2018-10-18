@@ -1,6 +1,12 @@
 package com.levietthang.shopee.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.springframework.hateoas.core.Relation;
+
 import javax.persistence.*;
+import javax.validation.Constraint;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Date;
 

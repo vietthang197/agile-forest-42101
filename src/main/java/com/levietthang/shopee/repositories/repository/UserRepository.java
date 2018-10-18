@@ -12,7 +12,12 @@ import java.util.Set;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>, CustomUserRepository {
+    @Query("SELECT u FROM com.levietthang.shopee.entities.User u WHERE u.username =?1")
     User findUserByUsername(String username);
+
+    @Query("SELECT u FROM com.levietthang.shopee.entities.User u WHERE u.username =?1 AND u.id =?2")
     User findUserByUsernameAndId(String username, int id);
+
+    @Query("SELECT u FROM com.levietthang.shopee.entities.User u WHERE u.email =?1")
     User findUserByEmail(String email);
 }
