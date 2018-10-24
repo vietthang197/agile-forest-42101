@@ -19,6 +19,9 @@ public class Category {
     @Column
     private String image;
 
+    @Column(unique = true)
+    private String urlEncode;
+
     public Category() {
     }
 
@@ -58,5 +61,13 @@ public class Category {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getUrlEncode() {
+        return urlEncode;
+    }
+
+    public void setUrlEncode(String urlEncode) {
+        this.urlEncode = urlEncode;
     }
 }
