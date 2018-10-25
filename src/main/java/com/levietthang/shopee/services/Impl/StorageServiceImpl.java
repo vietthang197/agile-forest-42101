@@ -27,10 +27,10 @@ public class StorageServiceImpl implements StorageService {
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             } else {
-                throw new RuntimeException("FAIL!");
+                throw new RuntimeException("FAILED!");
             }
         } catch (MalformedURLException e) {
-            throw new RuntimeException("FAIL!");
+            throw new RuntimeException("FAILED!");
         }
     }
 
